@@ -11,4 +11,4 @@ class Customer(models.Model):
     city = models.CharField(max_length=100)
     state = models.CharField(max_length=100)
     zip_code = models.CharField(max_length=100)
-    membership_history = models.TimeField()
+    membership_history = models.DateTimeField(auto_now_add=True)
