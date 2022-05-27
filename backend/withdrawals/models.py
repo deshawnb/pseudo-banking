@@ -5,4 +5,4 @@ from banking_accounts.models import BankingAccount
 
 class Withdrawal(models.Model):
     banking_account = models.ForeignKey(BankingAccount,on_delete=models.CASCADE)
-    ammount_withdrawn = models.IntegerField()
+    amount_withdrawn = models.IntegerField()
