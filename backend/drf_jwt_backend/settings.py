@@ -42,6 +42,11 @@ INSTALLED_APPS = [
     'corsheaders',
     'cars.apps.CarsConfig',  # This app is for example use only
     'customers',
+    'account_types',
+    'banking_accounts',
+    'budgets',
+    'deposits',
+    'withdrawals',
 ]
 
 MIDDLEWARE = [
