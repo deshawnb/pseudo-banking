@@ -1,8 +1,8 @@
 from rest_framework import serializers
-from .models import Customer
+from .models import Withdrawal
 
-class CustomerSerializer(serializers.ModelSerializer):
+class WithdrawalSerializer(serializers.ModelSerializer):
     class Meta:
-        model = Customer
+        model = Withdrawal
         fields = ['id', 'banking_account', 'amount_withdrawn']
         depth = 1
