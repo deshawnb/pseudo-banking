@@ -12,8 +12,23 @@ const Navbar = () => {
       <ul>
         <li className="brand">
           <Link to="/" style={{ textDecoration: "none", color: "white" }}>
-            <b>React/Django JWT</b>
+            <b>Pseudo Banking</b>
           </Link>
+        </li>
+        <li>
+          {user ? (
+            <button>Bank accounts</button>
+          ) : (<p></p>)}
+        </li>
+        <li>
+          {user ? (
+            <button>Budgets</button>
+          ) : (<p></p>)}
+        </li>
+        <li>
+          {user ? (
+            <button onClick={() => navigate("/info")}>Your Info</button>
+          ) : (<p></p>)}
         </li>
         <li>
           {user ? (
