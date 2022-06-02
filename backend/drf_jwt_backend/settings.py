@@ -45,8 +45,8 @@ INSTALLED_APPS = [
     'account_types',
     'banking_accounts',
     'budgets',
-    'deposits',
-    'withdrawals',
+    'transactions',
+    'transaction_types',
 ]
 
 MIDDLEWARE = [
