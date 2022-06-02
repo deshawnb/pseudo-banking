@@ -6,6 +6,7 @@ from authentication.models import User
 # Create your models here.
 class BankingAccount(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
+    account_name = models.CharField(max_length=100)
     account_type = models.ForeignKey(AccountType, on_delete=models.CASCADE)
     balance = models.IntegerField()
     budget = models.ForeignKey(Budget, on_delete=models.CASCADE)
