@@ -17,12 +17,12 @@ const Navbar = () => {
         </li>
         <li>
           {user ? (
-            <button>Bank accounts</button>
+            <button onClick={() => navigate("/account")}>Bank accounts</button>
           ) : (<p></p>)}
         </li>
         <li>
           {user ? (
-            <button>Budgets</button>
+            <button onClick={() => navigate("/budget")}>Budgets</button>
           ) : (<p></p>)}
         </li>
         <li>
