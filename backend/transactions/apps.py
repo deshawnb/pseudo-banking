@@ -1,6 +1,6 @@
 from django.apps import AppConfig
 
 
-class WithdrawalsConfig(AppConfig):
+class TransactionsConfig(AppConfig):
     default_auto_field = 'django.db.models.BigAutoField'
-    name = 'withdrawals'
+    name = 'transactions'
