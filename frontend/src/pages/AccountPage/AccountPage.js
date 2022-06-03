@@ -8,9 +8,13 @@ import axios from "axios";
 const AccountPage = () => {
     const [user, token] = useAuth();
     const [accounts, setAccounts] = useState([]);
+    const [budgets, setBudgets] = useState([]);
+    const [account_types, setAccountTypes] = useState([]);
   
     useEffect(() => {
       fetchAccount();
+      fetchBudget();
+      fetchAccountTypes();
     }, [token]);
 
   const fetchAccount = async () => {
@@ -20,7 +24,36 @@ const AccountPage = () => {
           Authorization: "Bearer " + token,
         },
       });
+      console.log(response)
       setAccounts(response.data);
+    } catch (error) {
+      console.log(error.response.data);
+    }
+  };
+
+  const fetchBudget = async () => {
+    try {
+      let response = await axios.get("http://127.0.0.1:8000/api/budgets/", {
+        headers: {
+          Authorization: "Bearer " + token,
+        },
+      });
+      console.log(response)
+      setBudgets(response.data);
+    } catch (error) {
+      console.log(error.response.data);
+    }
+  };
+
+  const fetchAccountTypes = async () => {
+    try {
+      let response = await axios.get("http://127.0.0.1:8000/api/account_types/all/", {
+        headers: {
+          Authorization: "Bearer " + token,
+        },
+      });
+      console.log(response)
+      setAccountTypes(response.data);
     } catch (error) {
       console.log(error.response.data);
     }
@@ -47,8 +80,10 @@ const AccountPage = () => {
         <div className="container">
         <h1>Your Bank Accounts</h1>
         <BankAccountList parentAccounts={accounts}/>
-        <BankAccountForm addNewInfoProperty={createAccount}/>
-        <button>Add new account</button>
+        <BankAccountForm addNewInfoProperty={createAccount} user_id={user.id} budgets={budgets} account_types={account_types}/>
+        </div>
+        <div>
+          <p>Place holder</p>
         </div>
       </div>
       
