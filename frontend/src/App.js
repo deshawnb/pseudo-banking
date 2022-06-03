@@ -8,6 +8,8 @@ import LoginPage from "./pages/LoginPage/LoginPage";
 import RegisterPage from "./pages/RegisterPage/RegisterPage";
 import CustomerInfoPage from "./pages/CustomerInfoPage/CustomerInfoPage";
 import AccountPage from "./pages/AccountPage/AccountPage";
+import BudgetPage from "./pages/BudgetPage/BudgetPage";
+import TransactionPage from "./pages/TransactionPage/TransactionPage";
 
 // Component Imports
 import Navbar from "./components/NavBar/NavBar";
@@ -42,6 +44,22 @@ function App() {
           element={
             <PrivateRoute>
               <AccountPage />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/budget"
+          element={
+            <PrivateRoute>
+              <BudgetPage />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/transfers"
+          element={
+            <PrivateRoute>
+              <TransactionPage />
             </PrivateRoute>
           }
         />

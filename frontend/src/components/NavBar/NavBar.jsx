@@ -22,6 +22,11 @@ const Navbar = () => {
         </li>
         <li>
           {user ? (
+            <button onClick={() => navigate("/transfers")}>Transfers</button>
+          ) : (<p></p>)}
+        </li>
+        <li>
+          {user ? (
             <button onClick={() => navigate("/budget")}>Budgets</button>
           ) : (<p></p>)}
         </li>
