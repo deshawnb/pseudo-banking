@@ -4,5 +4,7 @@ from .models import Budget
 class BudgetSerializer(serializers.ModelSerializer):
     class Meta:
         model = Budget
-        fields = ['id', 'user', 'budget_name', 'budget_limit']
+        fields = ['id', 'user', 'user_id', 'budget_name', 'budget_limit']
         depth = 1
+
+    user_id = serializers.IntegerField(write_only=True)
