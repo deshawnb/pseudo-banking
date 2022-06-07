@@ -32,15 +32,15 @@ def transaction_info(request):
 @api_view(['GET', 'PUT', 'DELETE'])
 @permission_classes([IsAuthenticated]) 
 def transactions_by_detail(request, pk):
-    transaction = get_object_or_404(Transaction, pk=pk)
     if request.method == "GET":
-        serializer = TransactionSerializer(transaction)
+        transaction = Transaction.objects.filter(bank_account_id=pk)
+        serializer = TransactionSerializer(transaction, many=True)
         return Response(serializer.data)
-    elif request.method == 'PUT':
-        serializer = TransactionSerializer(transaction, data=request.data)
-        serializer.is_valid(raise_exception=True)
-        serializer.save()
-        return Response(serializer.data, status=status.HTTP_200_OK)
-    elif request.method == 'DELETE':
-        transaction.delete()
-        return Response(status=status.HTTP_204_NO_CONTENT)
+    # elif request.method == 'PUT':
+    #     serializer = TransactionSerializer(transaction, data=request.data)
+    #     serializer.is_valid(raise_exception=True)
+    #     serializer.save()
+    #     return Response(serializer.data, status=status.HTTP_200_OK)
+    # elif request.method == 'DELETE':
+    #     transaction.delete()
+    #     return Response(status=status.HTTP_204_NO_CONTENT)

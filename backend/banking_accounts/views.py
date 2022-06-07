@@ -31,15 +31,17 @@ def user_account(request):
 @api_view(['GET', 'PUT', 'DELETE'])
 @permission_classes([IsAuthenticated]) 
 def accounts_by_detail(request, pk):
-    banking_account = get_object_or_404(BankingAccount, pk=pk)
     if request.method == "GET":
-        serializer = BankingAccountSerializer(banking_account)
+        banking_account = BankingAccount.objects.filter(id=pk)
+        serializer = BankingAccountSerializer(banking_account, many=True)
         return Response(serializer.data)
     elif request.method == 'PUT':
+        banking_account = get_object_or_404(BankingAccount, pk=pk)
         serializer = BankingAccountSerializer(banking_account, data=request.data)
         serializer.is_valid(raise_exception=True)
         serializer.save()
         return Response(serializer.data, status=status.HTTP_200_OK)
     elif request.method == 'DELETE':
+        banking_account = get_object_or_404(BankingAccount, pk=pk)
         banking_account.delete()
         return Response(status=status.HTTP_204_NO_CONTENT)
