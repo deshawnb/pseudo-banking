@@ -2,34 +2,52 @@ import React from "react";
 import { useEffect, useState } from "react";
 import useAuth from "../../hooks/useAuth";
 import BudgetList from "../../components/BudgetList/BudgetList";
+import BudgetForm from "../../components/BudgetForm/BudgetForm";
 import axios from "axios";
 
 const BudgetPage = () => {
-    const [user, token] = useAuth();
-    const [accounts, setAccounts] = useState([]);
+  const [user, token] = useAuth();
+  const [budgets, setBudgets] = useState([]);
   
-    useEffect(() => {
-      const fetchAccount = async () => {
-        try {
-          let response = await axios.get("http://127.0.0.1:8000/api/budgets/", {
-            headers: {
-              Authorization: "Bearer " + token,
-            },
-          });
-          setAccounts(response.data);
-        } catch (error) {
-          console.log(error.response.data);
-        }
-      };
-      fetchAccount();
-    }, [token]);
-  
-    return (
-      <div className="container">
-        <h1>Your Budgets</h1>
-        <BudgetList parentBudgets={accounts}/>
-      </div>
-    );
+  useEffect(() => {
+    fetchBudget();
+  }, [token]);
+
+  const fetchBudget = async () => {
+    try {
+      let response = await axios.get("http://127.0.0.1:8000/api/budgets/", {
+        headers: {
+          Authorization: "Bearer " + token,
+        },
+      });
+      setBudgets(response.data);
+    } catch (error) {
+      console.log(error.response.data);
+    }
   };
+  
+  const createBudget = async (newAccount) => {
+    try {
+      let response = await axios.post("http://127.0.0.1:8000/api/budgets/", newAccount, {
+        headers: {
+          Authorization: "Bearer " + token,
+        }, 
+      } );
+      if(response.status === 201){
+        await fetchBudget();
+      }
+    } catch (error) {
+      console.log(error.message);
+    }
+  };
+
+  return (
+    <div className="container">
+      <h1>Your Budgets</h1>
+      <BudgetList parentBudgets={budgets}/>
+      <BudgetForm addNewBudgetProperty={createBudget} user_id={user.id}/>
+    </div>
+  );
+};
 
 export default BudgetPage
