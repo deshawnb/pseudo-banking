@@ -7,6 +7,7 @@ import { useNavigate, Link } from "react-router-dom";
 import TransactionList from "../../components/TransactionList/TransactionList";
 import TransactionForm from "../../components/TransactionForm/TransactionForm";
 import BankAccountDetails from "../../components/BankAccountDetails/BankAccountDetails";
+import TransactionsChartTracker from "../../components/TransactionChartTracker/TransactionChartTracker";
 
 const AccountDetailsPage = () => {
     const [user, token] = useAuth();
@@ -104,6 +105,7 @@ const AccountDetailsPage = () => {
             </Link>
             <TransactionForm addNewBudgetProperty={createTransaction} user_id={user.id} bank_account_id={accountId} transaction_types={transactionTypes}/>
             <h2>Transaction History</h2>
+            <TransactionsChartTracker parentEntries={transactions}/>
             <TransactionList parentTransactions={transactions}/>
             
             </div>
