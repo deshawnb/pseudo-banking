@@ -23,7 +23,7 @@ const TransactionForm = (props) => {
     }
 
     return (
-        <form onSubmit={handleSubmit}>
+        <form className="info" onSubmit={handleSubmit}>
             <label>Transaction Name</label>
             <input type='text' value={transaction_name} onChange={(event) =>setTransactionName(event.target.value)}/>
             <select id={transaction_type_id} onChange={(event) =>setTransactionTypeId(event.target.value)}> 

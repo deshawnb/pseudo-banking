@@ -8,6 +8,7 @@ import TransactionList from "../../components/TransactionList/TransactionList";
 import TransactionForm from "../../components/TransactionForm/TransactionForm";
 import BankAccountDetails from "../../components/BankAccountDetails/BankAccountDetails";
 import TransactionsChartTracker from "../../components/TransactionChartTracker/TransactionChartTracker";
+import card from "../../assets/towfiqu-barbhuiya-HNPrWOH2Z8U-unsplash.jpg"
 
 const AccountDetailsPage = () => {
     const [user, token] = useAuth();
@@ -96,12 +97,14 @@ const AccountDetailsPage = () => {
       return (
         <div>
             <div className="container">
+            <div>
+              <img src={card} alt="happy family" style={{width: "50%"}}/>
+            </div>
             <h1>Bank Account {accountId}</h1>
             <h2>Account Details</h2>
             <BankAccountDetails parentAccounts={account}/>
-            <button>Edit Account</button>
             <Link to={`/`}>
-              <button onClick={deleteAccount}>Delete Account</button>
+              <button style={{color: "red"}} onClick={deleteAccount}>Delete Account</button>
             </Link>
             <TransactionForm addNewBudgetProperty={createTransaction} user_id={user.id} bank_account_id={accountId} transaction_types={transactionTypes}/>
             <h2>Transaction History</h2>

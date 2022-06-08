@@ -19,8 +19,8 @@ p {
 
 button {
   background-color: transparent;
-  border: 2px solid steelblue;
-  color: steelblue;
+  border: 2px solid #E6E6E6;
+  color: #E6E6E6;
   font-size: 1rem;
   font-family: inherit;
   max-width: 100px;
@@ -29,8 +29,8 @@ button {
 
 button:hover {
   cursor: pointer;
-  color: white;
-  background-color: steelblue;
+  color: #39393A;
+  background-color: #E6E6E6;
 }
 
 .container {
@@ -55,4 +55,22 @@ button:hover {
   margin: 5px;
   padding: 3px 7px;
   font-size: 17px;
+}
+
+.info {
+  background-color: #39393A;
+  border-color: black;
+  margin: 5px;
+  color: #E6E6E6;
+  
+  padding: 20px;
+  
+}
+
+.info details {
+  background-color: white;
+  color: black;
+  margin: 10px;
+  padding: 20px;
+  border-bottom: groove;
 }

@@ -11,7 +11,7 @@ const BankAccountList = (props) => {
     }
     
     return (
-        <div>
+        <div className="info">
             {props.parentAccounts.map((account) => {
                 return (
                     <div>

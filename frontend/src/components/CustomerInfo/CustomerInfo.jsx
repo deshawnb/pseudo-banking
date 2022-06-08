@@ -5,7 +5,7 @@ const CustomerInfo = (props) => {
         <div>
             {props.parentCustomers.map((customer) => {
                 return (
-                    <div>
+                    <div className="info">
                         <p>First Name: {customer.first_name}</p>
                         <p>Last Name: {customer.last_name}</p>
                         <p>Address: {customer.street_address}</p>

@@ -4,6 +4,7 @@ import useAuth from "../../hooks/useAuth";
 import BankAccountList from "../../components/BankAccountList/BankAccountList";
 import BankAccountForm from "../../components/BankAccountForm/BankAccountForm";
 import axios from "axios";
+import bank from "../../assets/towfiqu-barbhuiya-joqWSI9u_XM-unsplash.jpg"
 
 const AccountPage = () => {
     const [user, token] = useAuth();
@@ -78,6 +79,9 @@ const AccountPage = () => {
     return (
       <div>
         <div className="container">
+        <div>
+          <img src={bank} alt="happy family" style={{width: "50%"}}/>
+        </div>
         <h1>Your Bank Accounts</h1>
         <BankAccountList parentAccounts={accounts}/>
         <BankAccountForm addNewInfoProperty={createAccount} user_id={user.id} budgets={budgets} account_types={account_types}/>

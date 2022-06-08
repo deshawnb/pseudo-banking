@@ -2,7 +2,7 @@
 
 const BankAccount = (props) => {
     return (
-        <div>
+        <div className="info details">
             <p>owner: {props.user.username}</p>
             <p>Account Name: {props.account_name}</p>
             <p>Account number: {props.id}</p>

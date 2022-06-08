@@ -26,7 +26,7 @@ const BankAccountForm = (props) => {
     }
 
     return (
-        <form onSubmit={handleSubmit}>
+        <form className="info" onSubmit={handleSubmit}>
             <label>New Account name</label>
             <input type='text' value={account_name} onChange={(event) =>setAccountName(event.target.value)}/>
             <select id={account_type_id} onChange={(event) =>setAccountTypeId(event.target.value)}> 

@@ -3,7 +3,7 @@ import Transaction from "../Transaction/Transaction";
 const TransactionList = (props) => {
     
     return (
-        <div>
+        <div className="info">
             {props.parentTransactions.map((transaction) => {
                 return (
                     <div>

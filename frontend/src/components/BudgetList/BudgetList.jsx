@@ -3,7 +3,7 @@ import Budget from "../Budget/Budget";
 const BudgetList = (props) => {
 
     return (
-        <div>
+        <div className="info">
             {props.parentBudgets.map((budget) => {
                 return (
                     <div>

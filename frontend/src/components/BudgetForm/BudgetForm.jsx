@@ -18,7 +18,7 @@ const BudgetForm = (props) => {
     }
 
     return (
-        <form onSubmit={handleSubmit}>
+        <form className="info" onSubmit={handleSubmit}>
             <label>New Account name</label>
             <input type='text' value={budget_name} onChange={(event) =>setBudgetName(event.target.value)}/>
             <label>Budget Limit</label>

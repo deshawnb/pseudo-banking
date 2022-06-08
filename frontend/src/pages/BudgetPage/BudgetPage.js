@@ -4,6 +4,7 @@ import useAuth from "../../hooks/useAuth";
 import BudgetList from "../../components/BudgetList/BudgetList";
 import BudgetForm from "../../components/BudgetForm/BudgetForm";
 import axios from "axios";
+import budget from "../../assets/sincerely-media-rct82Ei80Fw-unsplash.jpg"
 
 const BudgetPage = () => {
   const [user, token] = useAuth();
@@ -43,6 +44,9 @@ const BudgetPage = () => {
 
   return (
     <div className="container">
+      <div>
+        <img src={budget} alt="happy family" style={{width: "50%"}}/>
+      </div>
       <h1>Your Budgets</h1>
       <BudgetList parentBudgets={budgets}/>
       <BudgetForm addNewBudgetProperty={createBudget} user_id={user.id}/>
