@@ -1,16 +1,14 @@
 // General Imports
 import { Routes, Route } from "react-router-dom";
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import "./App.css";
 
 // Pages Imports
 import HomePage from "./pages/HomePage/HomePage";
 import LoginPage from "./pages/LoginPage/LoginPage";
 import RegisterPage from "./pages/RegisterPage/RegisterPage";
-import CustomerInfoPage from "./pages/CustomerInfoPage/CustomerInfoPage";
 import AccountPage from "./pages/AccountPage/AccountPage";
 import BudgetPage from "./pages/BudgetPage/BudgetPage";
-import TransactionPage from "./pages/TransactionPage/TransactionPage";
 import AccountDetailsPage from "./pages/AccountDetailsPage/AccountDetailsPage";
 
 // Component Imports
@@ -22,10 +20,7 @@ import PrivateRoute from "./utils/PrivateRoute";
 
 
 function App() {
-  const [accountId, setAccountId] = useState();
 
-
-  
   return (
     <div>
       <Navbar />
@@ -35,14 +30,6 @@ function App() {
           element={
             <PrivateRoute>
               <HomePage />
-            </PrivateRoute>
-          }
-        />
-        <Route
-          path="/info"
-          element={
-            <PrivateRoute>
-              <CustomerInfoPage />
             </PrivateRoute>
           }
         />
@@ -59,14 +46,6 @@ function App() {
           element={
             <PrivateRoute>
               <BudgetPage />
-            </PrivateRoute>
-          }
-        />
-        <Route
-          path="/transfers"
-          element={
-            <PrivateRoute>
-              <TransactionPage />
             </PrivateRoute>
           }
         />

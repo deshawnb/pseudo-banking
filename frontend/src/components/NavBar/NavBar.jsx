@@ -20,21 +20,21 @@ const Navbar = () => {
             <button onClick={() => navigate("/account")}>Bank accounts</button>
           ) : (<p></p>)}
         </li>
-        <li>
+        {/* <li>
           {user ? (
             <button onClick={() => navigate("/transfers")}>Transfers</button>
           ) : (<p></p>)}
-        </li>
+        </li> */}
         <li>
           {user ? (
             <button onClick={() => navigate("/budget")}>Budgets</button>
           ) : (<p></p>)}
         </li>
-        <li>
+        {/* <li>
           {user ? (
             <button onClick={() => navigate("/info")}>Your Info</button>
           ) : (<p></p>)}
-        </li>
+        </li> */}
         <li>
           {user ? (
             <button onClick={logoutUser}>Logout</button>

@@ -86,11 +86,7 @@ const AccountPage = () => {
         <BankAccountList parentAccounts={accounts}/>
         <BankAccountForm addNewInfoProperty={createAccount} user_id={user.id} budgets={budgets} account_types={account_types}/>
         </div>
-        <div>
-          <p>Place holder</p>
-        </div>
       </div>
-      
     );
   };
 
