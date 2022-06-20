@@ -4,7 +4,6 @@ import useAuth from "../../hooks/useAuth";
 import axios from "axios";
 import { useParams } from "react-router-dom";
 import { useNavigate, Link } from "react-router-dom";
-import TransactionList from "../../components/TransactionList/TransactionList";
 import TransactionForm from "../../components/TransactionForm/TransactionForm";
 import BankAccountDetails from "../../components/BankAccountDetails/BankAccountDetails";
 import TransactionsChartTracker from "../../components/TransactionChartTracker/TransactionChartTracker";
@@ -14,12 +13,14 @@ const AccountDetailsPage = () => {
     const [user, token] = useAuth();
     const {accountId} = useParams();
     const [account, setAccount] = useState([]);
+    const [budgets, setBudgets] = useState([]);
     const [transactions, setTransactions] = useState([]);
     const [transactionTypes, setTransactionTypes] = useState([]);
 
     
     useEffect(() => {
         fetchAccountById(accountId);
+        fetchBudget();
         fetchTransactionById();
         fetchTransactionTypes();
     }, [token]);
@@ -66,6 +67,20 @@ const AccountDetailsPage = () => {
         }
       };
 
+      const fetchBudget = async () => {
+        try {
+          let response = await axios.get("http://127.0.0.1:8000/api/budgets/", {
+            headers: {
+              Authorization: "Bearer " + token,
+            },
+          });
+          console.log(response)
+          setBudgets(response.data);
+        } catch (error) {
+          console.log(error.response.data);
+        }
+      };
+
       const createTransaction = async (newTransaction) => {
         try {
           let response = await axios.post("http://127.0.0.1:8000/api/transactions/", newTransaction, {
@@ -102,15 +117,14 @@ const AccountDetailsPage = () => {
             </div>
             <h1>Bank Account {accountId}</h1>
             <h2>Account Details</h2>
-            <BankAccountDetails parentAccounts={account}/>
+            <BankAccountDetails parentAccounts={account} budgets={budgets}/>
+
             <Link to={`/`}>
               <button style={{color: "red"}} onClick={deleteAccount}>Delete Account</button>
             </Link>
-            <TransactionForm addNewBudgetProperty={createTransaction} user_id={user.id} bank_account_id={accountId} transaction_types={transactionTypes}/>
+            <TransactionForm addNewBudgetProperty={createTransaction} user_id={user.id} bank_account_id={accountId} transaction_types={transactionTypes} account={account}/>
             <h2>Transaction History</h2>
-            <TransactionsChartTracker parentEntries={transactions}/>
-            <TransactionList parentTransactions={transactions}/>
-            
+            <TransactionsChartTracker parentEntries={transactions} parentAccounts={account}/>
             </div>
         </div>
       );
